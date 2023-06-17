@@ -1,0 +1,31 @@
+Berikut adalah catatan singkat untuk instalasi dan penggunaan frontend:
+
+1. Buka command-line interface (CLI) dan navigasikan ke direktori frontend di dalam folder proyek menggunakan perintah berikut:
+
+    ```
+    cd path/to/frontend
+    ```
+
+2. Ketik perintah berikut untuk menginstal semua dependensi yang diperlukan:
+
+    ```
+    npm install
+    ```
+
+3. Setelah selesai menginstal dependensi, ketik perintah berikut untuk melakukan build aplikasi frontend:
+
+    ```
+    npm run build
+    ```
+
+4. Setelah proses build selesai, ketik perintah berikut untuk menjalankan aplikasi frontend:
+
+    ```
+    npm run preview
+    ```
+
+   URL aplikasi frontend akan muncul di CLI. Buka URL tersebut di browser untuk melihat dan menggunakan aplikasi frontend.
+
+Pastikan untuk memeriksa dan menyesuaikan konfigurasi sesuai kebutuhan Anda sebelum menjalankan langkah-langkah di atas.
+
+Selamat menggunakan aplikasi frontend! Jika Anda memiliki pertanyaan atau mengalami kesulitan, pastikan untuk merujuk ke dokumentasi yang relevan atau mencari bantuan dari sumber daya yang tepat.

@@ -1,0 +1,35 @@
+Berikut adalah catatan petunjuk instalasi dan penggunaan singkat untuk script server API:
+
+### Instalasi dan Penggunaan Server API
+
+1. Buka command-line interface (CLI) dan navigasikan ke direktori server di dalam folder proyek menggunakan perintah berikut:
+
+    ```
+    cd path/to/server
+    ```
+
+2. Ketik perintah berikut untuk menginstal dependensi yang diperlukan:
+
+    ```
+    npm install
+    ```
+
+3. Setelah selesai menginstal dependensi, ketik perintah berikut untuk membuat database dan tabel:
+
+    ```
+    npm run setDB
+    ```
+
+4. Terakhir, ketik perintah berikut untuk menjalankan server API:
+
+    ```
+    npm start
+    ```
+
+Pastikan server API berjalan tanpa kesalahan setelah menjalankan perintah terakhir.
+
+Dengan langkah-langkah di atas, server API akan terpasang dan berjalan di komputer Anda, siap untuk menerima permintaan dari klien. Pastikan untuk memeriksa URL dan port yang sesuai dengan konfigurasi Anda.
+
+Gunakan alat pengembangan yang sesuai, seperti Postman atau cURL, untuk mengirim permintaan ke API-endpoints yang tersedia dan memeriksa respons yang diterima untuk mendapatkan hasil yang diharapkan.
+
+Selamat menggunakan server API! Jika ada pertanyaan atau kendala, pastikan untuk merujuk ke dokumentasi yang relevan atau mencari bantuan dari sumber daya yang tepat.

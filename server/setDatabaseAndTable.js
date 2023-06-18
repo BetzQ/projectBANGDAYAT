@@ -33,18 +33,18 @@ connection.connect((err) => {
 
     // SQL untuk membuat tabel
     const createTableQuery = `
-      CREATE TABLE IF NOT EXISTS Sheets (
-        id INT(255) NOT NULL,
-        username VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-        email VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-        password VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-        upload_cv VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
-        phone_number INT(11) NOT NULL,
-        birth DATE NOT NULL,
-        role VARCHAR(255) COLLATE utf8mb4_general_ci,
-        PRIMARY KEY (id)
-      );
-    `;
+    CREATE TABLE IF NOT EXISTS users (
+      id INT(255) NOT NULL,
+      username VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+      email VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+      password VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+      upload_cv VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+      phone_number INT(11) NOT NULL,
+      birth DATE NOT NULL,
+      role INT(1) NOT NULL,
+      PRIMARY KEY (id)
+    );
+  `;
 
     // Eksekusi query untuk membuat tabel
     connection.query(createTableQuery, (err, results, fields) => {

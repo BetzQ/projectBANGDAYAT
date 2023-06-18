@@ -65,10 +65,12 @@ const AdminDashboardPage = () => {
           setIsAuthenticated(true)
           setUserData(matchedUser)
         } else {
+          sessionStorage.removeItem('token')
           navigate('/login')
         }
       } catch (error) {
         console.error('Error:', error)
+        sessionStorage.removeItem('token')
         navigate('/login')
       }
     }
@@ -89,58 +91,6 @@ const AdminDashboardPage = () => {
     if (newWebTitle !== '') {
       setWebTitle(newWebTitle)
       setNewWebTitle('')
-    }
-  }
-
-  const deleteUser = async (userId: string) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:3000/user/${userId}`,
-      )
-      console.log(response.data.message)
-      // Refresh user list after deletion
-      fetchUsers()
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError<Record<string, never>>
-        if (
-          axiosError.response &&
-          axiosError.response.data &&
-          axiosError.response.data.error
-        ) {
-          const responseData = axiosError.response.data
-          console.error('Error deleting user:', responseData.error)
-        } else {
-          console.error(
-            'An error occurred while deleting the user:',
-            axiosError,
-          )
-        }
-      } else {
-        console.error('An error occurred while deleting the user:', error)
-      }
-    }
-  }
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/users')
-      setUsers(response.data.users)
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError<Record<string, never>>
-        if (
-          axiosError.response &&
-          axiosError.response.data &&
-          axiosError.response.data.error
-        ) {
-          console.error('Error fetching users:', axiosError.response.data.error)
-        } else {
-          console.error('An error occurred while fetching users:', axiosError)
-        }
-      } else {
-        console.error('An error occurred while fetching users:', error)
-      }
     }
   }
 
@@ -272,27 +222,24 @@ const AdminDashboardPage = () => {
                 <th className="py-2 px-4">Password</th>
                 <th className="py-2 px-4">Upload CV</th>
                 <th className="py-2 px-4">No Handphone</th>
-                <th className="py-2 px-4">Actions</th>
               </tr>
             </thead>
             <tbody>
               {users.map(
                 (user) =>
                   // Cek jika user.role tidak sama dengan 1
-                  user.role !== 1 && (
+                  user.role !== 1 ? (
                     <tr key={user.id}>
                       <td className="py-2 px-4">{user.username}</td>
                       <td className="py-2 px-4">{user.email}</td>
                       <td className="py-2 px-4">{user.password}</td>
                       <td className="py-2 px-4">{user.upload_cv}</td>
                       <td className="py-2 px-4">{user.phone_number}</td>
-                      <td className="py-2 px-4">
-                        <button
-                          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                          onClick={() => deleteUser(user.id)}
-                        >
-                          Delete
-                        </button>
+                    </tr>
+                  ) : (
+                    <tr key={user.id}>
+                      <td className="pt-10 text-center" colSpan={5}>
+                        Belum Ada User
                       </td>
                     </tr>
                   ),

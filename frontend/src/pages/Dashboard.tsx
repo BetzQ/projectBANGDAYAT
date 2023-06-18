@@ -100,10 +100,12 @@ if __name__ == '__main__':
           setIsAuthenticated(true)
           setUserData(matchedUser)
         } else {
+          sessionStorage.removeItem('token')
           navigate('/login')
         }
       } catch (error) {
         console.error('Error:', error)
+        sessionStorage.removeItem('token')
         navigate('/login')
       }
     }
